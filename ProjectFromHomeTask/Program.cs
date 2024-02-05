@@ -3,6 +3,7 @@ using System.Threading.Channels;
 
 class Work
 {
+  
     enum OptionsFromHMFive
     {
         defaultUserOptins,
@@ -14,14 +15,16 @@ class Work
     }
     static void HomeWork1()
     {
-        for (int i = 1; i < 99; i++)
+        const int MaxNumber = 99;
+        for (int i = 1; i <= MaxNumber ; i++)
         {
             if (i % 2 != 0) Console.WriteLine("число - {0} не чётное", i);
         }
     }
     static void HomeWork2()
     {
-        for(int i = 5; i > 1; i--)
+        const int MinValue = 1;
+        for(int i = 5; i >= MinValue; i--)
         {
             Console.WriteLine(i);
         }
@@ -31,12 +34,15 @@ class Work
         Console.Write("Введите положительное число: ");
         try
         {
-            uint counter = 1;
-            for (; counter < Convert.ToUInt32(Console.ReadLine());)
+
+            uint num = 0;
+            uint value = Convert.ToUInt32(Console.ReadLine());
+            for (uint counter = 1; counter <= value;)
             {
-                counter++;
+                num += counter;
+                counter += 1;
             }
-            Console.WriteLine("ваше сумма всех чисел от 1 до {0} = {0}", counter);
+            Console.WriteLine($"ваше сумма всех чисел от 1 до {value} = {num}");
         }
         catch
         {
@@ -46,10 +52,10 @@ class Work
     static void HomeWork4()
     {
         int secondFactor = 1;
-        for (int i = 7; i < 98;)
+        int i = 7;
+        while (secondFactor <= 98 / 7)
         {
-            i *= secondFactor++;
-            Console.WriteLine(i);
+            Console.WriteLine(i * secondFactor++);
         }
     }
     static void HomeWork5(OptionsFromHMFive options)
@@ -63,7 +69,7 @@ class Work
             nums.Item1 += arrayOne[i];
             nums.Item2 += arrayTwo[i];
         }
-        if (options == (OptionsFromHMFive.defaultUserOptins | OptionsFromHMFive.ProgrammerTestOptions))
+        if (options == OptionsFromHMFive.defaultUserOptins | options == OptionsFromHMFive.ProgrammerTestOptions)
         {
             Console.WriteLine(((nums.Item1 / 5) > (nums.Item2 / 5)) ? "среднее арифметическое массива один больше" : ((nums.Item1 / 5) < (nums.Item2 / 5) ? "среднее арифметическое второго массив больше" : "среднее арифметическое массивов равны"));
         }

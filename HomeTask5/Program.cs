@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualBasic;
-using ProjectFromHomeTask;
 using System;
 using System.IO;
 using System.Runtime.CompilerServices;
@@ -127,10 +126,7 @@ class WorkToStringInFile : WorkToString, CollectionFileMethod
         string Error = string.Empty;
         path = pathFromFile;
         const string formatFile = ".txt";
-        if(pathFromFile.Substring(pathFromFile.Length - 4) != formatFile)
-        {
-           throw new ErrorProgramHandler(new MyFormatExeption());
-        }
+        
         file = new FileStream(pathFromFile, FileMode.Open, FileAccess.ReadWrite);
     }
     public override string TheBiggestWord { get; set; } = string.Empty;

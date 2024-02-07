@@ -5,6 +5,10 @@ using System.Runtime.CompilerServices;
 using System.Text;
 class Work
 {
+    /*
+     * Привет, по домашке:
+       1. После того, как я изменяю все цифры на слова в тексте - теряется структура текста (все знаки, разделители, переходы на новую строку) - это нужно исправить
+     */
     static void Main()
     {
         const int SmallFunctionalThisClass = 2;
@@ -49,7 +53,7 @@ class Work
                             Console.WriteLine($"Самое длинное слово {obj.TheBiggestWord} оно встретилось {res} раз");
                             break;
                         case 3:
-                            Console.WriteLine(obj.ReplaceNumOfStr());
+                            Console.WriteLine(obj.ReplaceNumOfStr(string.Empty));
                             break;
                         case 4:
                             objHasfunctionThisClass.ShowMeInterrogativeAndyExclamatorySentence();
@@ -67,7 +71,8 @@ class Work
                     break;
                 case 2:
                     Console.Write("Впишите текст: ");
-                    obj = new WorkToStringInConsole(Console.ReadLine());
+                    string? UserText = Console.ReadLine();
+                    obj = new WorkToStringInConsole();
                     Console.WriteLine("Выберите операцию: ");
                     for (int i = 1; i < ListOperationFromArray.Length - SmallFunctionalThisClass; i++)
                     {
@@ -83,7 +88,7 @@ class Work
                             Console.WriteLine($"Самое длинное слово {obj.TheBiggestWord} оно встретилось {res} раз");
                             break;
                         case 3:
-                            Console.WriteLine(obj.ReplaceNumOfStr());
+                            Console.WriteLine(obj.ReplaceNumOfStr(UserText));
                             break;
                         default:
                             Console.WriteLine("Такого действия нет");
@@ -104,7 +109,7 @@ class Work
 }
 abstract class WorkToString
 {
-    public abstract string ReplaceNumOfStr();
+    public abstract string ReplaceNumOfStr(string featuresWork);
     public abstract string TheBiggestStringHasNum();
     public abstract int TheLongestWordAppear();
     public abstract string TheBiggestWord { get;  set; }
@@ -154,13 +159,13 @@ class WorkToStringInFile : WorkToString, CollectionFileMethod
     {
         return new WorkToStringInConsole().TheBiggestStringHasNum(ValueFromFile());
     }
-    public override string ReplaceNumOfStr()
+    public override string ReplaceNumOfStr(string txt)
     {
-        string[] strings = ValueFromFile();
-        string Saver = string.Empty;
+        string[] str = ValueFromFile();
         StreamWriter objWriter = new StreamWriter(path, append: false);
         WorkToStringInConsole obj = new WorkToStringInConsole();
-        objWriter.Write(strings);
+        txt = obj.ReplaceNumOfStr(str);
+        objWriter.Write(txt);
         return "Success";
     }
     void CollectionFileMethod.ShowMeInterrogativeAndyExclamatorySentence()
@@ -215,21 +220,18 @@ class WorkToStringInConsole : WorkToString
     public WorkToStringInConsole()
     {
     }
-        public override string ReplaceNumOfStr()
+        public override string ReplaceNumOfStr(string featuresWork)
         {
             StringBuilder stringBuilder = new StringBuilder();
             string Saver = string.Empty;
             int result;
-            foreach (string s in strings)
+            foreach (char s in featuresWork)
             {
-                stringBuilder = new StringBuilder(s);
-                foreach (char ch in s)
+                stringBuilder = new StringBuilder(s.ToString());
+               
+                if (int.TryParse(s.ToString(), out result))
                 {
-                    if (int.TryParse(ch.ToString(), out result))
-                    {
-                        stringBuilder.Replace(result.ToString(), result.RUNum());
-                    }
-
+                     stringBuilder.Replace(result.ToString(), result.RUNum());
                 }
                 Saver += stringBuilder.ToString();
             }

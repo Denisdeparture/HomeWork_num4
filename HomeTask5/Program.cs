@@ -5,10 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 class Work
 {
-    /*
-     * Привет, по домашке:
-       1. После того, как я изменяю все цифры на слова в тексте - теряется структура текста (все знаки, разделители, переходы на новую строку) - это нужно исправить
-     */
+  
     static void Main()
     {
         const int SmallFunctionalThisClass = 2;

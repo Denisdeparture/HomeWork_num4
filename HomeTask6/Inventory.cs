@@ -19,7 +19,7 @@ namespace HomeTask6
         }
         public double PriceInventory()
         {
-            double totalPrice = default;
+            double totalPrice = 0;
             foreach(var product in listProduct)
             {
                 totalPrice += product.Price;
@@ -28,7 +28,8 @@ namespace HomeTask6
         }
         public void AllProductInInventory()
         {
-            foreach(var product in listProduct) Console.WriteLine($"имя продукта:{product.NameProduct} \nцена продукта: {product.Price}\nиндетификатор продукта: {product.Identity}\nколичество: {product.Quantity} ");
+            foreach(var product in listProduct) Console.WriteLine($"имя продукта:{product.NameProduct} \nцена продукта: {product.Price}\nиндетификатор продукта: {product.Identity}\nколичество: {product.Quantity}\n ");
+            Console.WriteLine();
         }
         public void DeletedProductInInventory(string ID) => listProduct = listProduct.Where(x => x.Identity != ID).ToList();
         public void AddProductInInventory(Product product) => listProduct.Add(product);

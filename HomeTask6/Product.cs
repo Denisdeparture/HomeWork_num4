@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 enum CategoryProduct
 {
+    Unknow,
     Food,
     Cosmetic,
+    
 }
 namespace HomeTask6
 {

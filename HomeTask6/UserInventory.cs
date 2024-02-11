@@ -14,7 +14,8 @@ namespace HomeTask6
             UserInv = new Inventory
                (
                new Product() { CategoryProduct = CategoryProduct.Food, NameProduct = "bananas", Price = 50, Quantity = 10 },
-               new Product() { CategoryProduct = CategoryProduct.Cosmetic, NameProduct = "pack of napkins", Price = 80, Quantity = 5 }
+               new ProductStruct() { CategoryProduct = CategoryProduct.Cosmetic, NameProduct = "pack of napkins", Price = 80, Quantity = 5 }
+               
                );
         }
         public void Start()
@@ -63,10 +64,10 @@ namespace HomeTask6
                 "Еда",
                 "Косметика"
             };
-            for(int i = 0; i < arrayCategory.Length; i++) Console.WriteLine($"{i + 1}.{arrayCategory[i]}");
+            for(int i = 0; i < arrayCategory.Length; i++) Console.WriteLine($"{i}.{arrayCategory[i]}");
             Console.Write("Выберите категорию: ");
-            uint j = Convert.ToUInt32(Console.ReadLine()) + 1;
-            return (CategoryProduct) ((j <= arrayCategory.Length) ? j : 0);
+            uint j = Convert.ToUInt32(Console.ReadLine());
+            return (CategoryProduct) ((j <= arrayCategory.Length) ? j : throw new Exception());
         }
         
     }

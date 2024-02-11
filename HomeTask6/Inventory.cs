@@ -8,15 +8,12 @@ namespace HomeTask6
 {
     class Inventory 
     {
-        private List<Product> listProduct;
-        public Inventory(params Product[] products)
+        private List<ProductStandart> listProduct;
+        public Inventory(params ProductStandart[] products)
         {
             listProduct = products.ToList();
         }
-        public Product this[int index]
-        {
-            get => listProduct[index];
-        }
+       
         public double PriceInventory()
         {
             double totalPrice = 0;
